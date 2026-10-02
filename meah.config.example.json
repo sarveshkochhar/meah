@@ -1,0 +1,77 @@
+{
+  "providers": {
+    "glm": {
+      "kind": "openai-compatible",
+      "baseUrl": "https://api.z.ai/api/paas/v4",
+      "apiKeyEnv": "MEAH_GLM_API_KEY",
+      "defaultModel": "glm-4.5-air",
+      "models": [
+        "glm-4.5-air",
+        "glm-4.6"
+      ],
+      "description": "Z.AI GLM via its OpenAI-compatible endpoint."
+    },
+    "aicredits": {
+      "kind": "openai-compatible",
+      "baseUrl": "https://aicredits.in/v1",
+      "apiKeyEnv": "MEAH_AICREDITS_API_KEY",
+      "defaultModel": "z-ai/glm-4.6",
+      "description": "aicredits OpenAI-compatible gateway. Verified live: 406 active chat models, OpenRouter-style ids, includes the z-ai/glm-* family."
+    }
+  },
+  "defaults": {
+    "timeoutMs": 120000,
+    "maxOutputTokens": 4096,
+    "maxConcurrent": 3,
+    "maxContextChars": 60000,
+    "maxResultChars": 40000,
+    "maxRetries": 2,
+    "temperature": 0.2,
+    "permissionProfile": "read-only",
+    "retainTranscripts": false,
+    "cleanupWorkspaceOnFinish": false
+  },
+  "roles": {
+    "researcher": {
+      "provider": "aicredits",
+      "model": "z-ai/glm-4.6"
+    },
+    "builder": {
+      "provider": "aicredits",
+      "model": "z-ai/glm-4.7"
+    },
+    "coder": {
+      "provider": "aicredits",
+      "model": "z-ai/glm-4.7"
+    },
+    "debugger": {
+      "provider": "aicredits",
+      "model": "z-ai/glm-4.7"
+    },
+    "reviewer": {
+      "provider": "aicredits",
+      "model": "z-ai/glm-4.6"
+    },
+    "summarizer": {
+      "provider": "aicredits",
+      "model": "openai/gpt-4o-mini"
+    }
+  },
+  "terminal": {
+    "enabled": false,
+    "allowlist": [
+      "node",
+      "npm",
+      "ls",
+      "cat",
+      "rg",
+      "grep",
+      "git"
+    ],
+    "timeoutMs": 15000,
+    "maxOutputBytes": 32768,
+    "maxCommandsPerWorker": 4
+  },
+  "workspaceRoot": "workspaces",
+  "logLevel": "info"
+}

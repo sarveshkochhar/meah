@@ -1,0 +1,21 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+# secrets and local config
+.env
+.env.*
+!.env.example
+meah.config.json
+meah.config.*.json
+*.key
+*.pem
+secrets/
+
+# worker state
+workspaces/*
+!workspaces/.gitkeep
+transcripts/
+logs/
+*.log
+!meah.config.example.json

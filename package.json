@@ -1,0 +1,35 @@
+{
+  "name": "meah",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MEAH - Multi External Agent Harness: a local-first MCP server that lets Claude delegate isolated work to external LLMs.",
+  "type": "module",
+  "bin": {
+    "meah": "./dist/src/server.js"
+  },
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"*.md\" \"*.json\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"*.md\" \"*.json\"",
+    "test": "node --test --experimental-strip-types \"tests/*.test.ts\"",
+    "smoke": "node --env-file-if-exists=.env --experimental-strip-types scripts/smoke.ts",
+    "start": "node --env-file-if-exists=.env --experimental-strip-types scripts/web.ts",
+    "mcp": "node --env-file-if-exists=.env --experimental-strip-types src/server.ts",
+    "mcp:dist": "node --env-file-if-exists=.env dist/src/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.8.3"
+  },
+  "license": "MIT",
+  "author": "Sarvesh Kochhar"
+}
